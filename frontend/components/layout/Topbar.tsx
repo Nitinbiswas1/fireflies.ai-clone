@@ -7,6 +7,7 @@ import {
   ChevronDown,
   FileText,
   Loader2,
+  Menu,
   Mic,
   MessageSquare,
   Search,
@@ -108,26 +109,39 @@ export default function Topbar({ title, onSearchChange, children }: TopbarProps)
 
   return (
     <>
-      <header className="h-14 border-b border-slate-200/70 dark:border-slate-800 bg-white/80 dark:bg-slate-900/90 backdrop-blur-md flex items-center px-6 gap-4 shrink-0 sticky top-0 z-30 select-none">
+      <header className="h-14 border-b border-slate-200/70 dark:border-slate-800 bg-white/80 dark:bg-slate-900/90 backdrop-blur-md flex items-center px-3 sm:px-6 gap-2 sm:gap-4 shrink-0 sticky top-0 z-30 select-none">
+        {/* Mobile Sidebar Hamburger Toggle */}
+        <button
+          type="button"
+          onClick={() => window.dispatchEvent(new CustomEvent("fireflies:toggle-sidebar"))}
+          className="lg:hidden p-1.5 text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors shrink-0"
+          aria-label="Toggle navigation menu"
+          title="Open menu"
+        >
+          <Menu size={18} />
+        </button>
+
         {/* Left Title */}
-        <div className="min-w-[120px]">
+        <div className="min-w-0 shrink-0 hidden sm:block">
           {title && (
-            <h1 className="text-sm font-bold text-slate-800 dark:text-slate-100 tracking-tight">{title}</h1>
+            <h1 className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 tracking-tight truncate">
+              {title}
+            </h1>
           )}
         </div>
 
         {/* Center Global Search Input with Dropdown Overlay */}
-        <div ref={containerRef} className="flex-1 max-w-md mx-auto relative">
+        <div ref={containerRef} className="flex-1 max-w-md mx-auto relative min-w-0">
           <div className="relative flex items-center">
-            <Search size={14} className="absolute left-3 text-slate-400 pointer-events-none" />
+            <Search size={14} className="absolute left-2.5 sm:left-3 text-slate-400 pointer-events-none" />
             <input
               ref={inputRef}
               type="text"
               value={query}
               onChange={handleSearchInputChange}
               onFocus={() => setDropdownOpen(true)}
-              placeholder="Search by title or keyword"
-              className="w-full pl-9 pr-16 py-1.5 bg-slate-50 border border-slate-200/80 rounded-xl text-xs text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100 dark:placeholder:text-slate-400 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-400 focus:bg-white dark:focus:bg-slate-900 transition-all shadow-2xs"
+              placeholder="Search meetings…"
+              className="w-full pl-7 sm:pl-9 pr-7 sm:pr-16 py-1.5 bg-slate-50 border border-slate-200/80 rounded-xl text-xs text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100 dark:placeholder:text-slate-400 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-400 focus:bg-white dark:focus:bg-slate-900 transition-all shadow-2xs"
             />
             {query ? (
               <button
@@ -137,12 +151,12 @@ export default function Topbar({ title, onSearchChange, children }: TopbarProps)
                   setResults([]);
                   onSearchChange?.("");
                 }}
-                className="absolute right-3 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-0.5"
+                className="absolute right-2 sm:right-3 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-0.5"
               >
                 <X size={13} />
               </button>
             ) : (
-              <span className="absolute right-3 text-[10px] font-mono text-slate-400 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-1.5 py-0.5 rounded shadow-2xs pointer-events-none">
+              <span className="absolute right-2 sm:right-3 text-[10px] font-mono text-slate-400 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-1.5 py-0.5 rounded shadow-2xs pointer-events-none hidden sm:inline">
                 ⌘K
               </span>
             )}
@@ -252,7 +266,7 @@ export default function Topbar({ title, onSearchChange, children }: TopbarProps)
         </div>
 
         {/* Right Controls */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           {children}
 
           {/* Upgrade Green Button */}
@@ -264,7 +278,7 @@ export default function Topbar({ title, onSearchChange, children }: TopbarProps)
                 description: "Upgrade to Fireflies Pro or Business plans to unlock unlimited recording, transcription, and AI summary minutes.",
               })
             }
-            className="hidden sm:inline-flex items-center px-3 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100/80 border border-emerald-200/70 text-emerald-700 text-xs font-semibold transition-colors shadow-2xs"
+            className="hidden md:inline-flex items-center px-3 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100/80 border border-emerald-200/70 text-emerald-700 text-xs font-semibold transition-colors shadow-2xs"
           >
             Upgrade
           </button>
@@ -279,11 +293,11 @@ export default function Topbar({ title, onSearchChange, children }: TopbarProps)
                 icon: <Video size={24} />,
               })
             }
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-700 text-white text-xs font-medium transition-colors shadow-xs"
+            className="flex items-center gap-1 px-2.5 sm:px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-700 text-white text-xs font-medium transition-colors shadow-xs"
           >
             <Video size={13} />
-            <span>Capture</span>
-            <ChevronDown size={12} className="opacity-80" />
+            <span className="hidden sm:inline">Capture</span>
+            <ChevronDown size={12} className="opacity-80 hidden sm:inline" />
           </button>
 
           {/* Mic icon */}
@@ -296,7 +310,7 @@ export default function Topbar({ title, onSearchChange, children }: TopbarProps)
                 icon: <Mic size={24} />,
               })
             }
-            className="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
+            className="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-colors hidden xs:inline-flex"
             title="Voice notes"
           >
             <Mic size={15} />
@@ -312,7 +326,7 @@ export default function Topbar({ title, onSearchChange, children }: TopbarProps)
                 icon: <Bell size={24} />,
               })
             }
-            className="relative p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
+            className="relative p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-colors hidden xs:inline-flex"
             title="Notifications"
           >
             <Bell size={15} />

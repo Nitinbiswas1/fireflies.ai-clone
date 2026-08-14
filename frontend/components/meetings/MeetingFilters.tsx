@@ -49,10 +49,10 @@ export default function MeetingFilters({
   const hasActiveFilters = Boolean(search || selectedParticipantId !== null || selectedTopics.length > 0);
 
   return (
-    <div className="border-b border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-3 space-y-2.5 select-none">
-      <div className="flex items-center gap-3 flex-wrap">
+    <div className="border-b border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 sm:px-6 py-3 space-y-2.5 select-none">
+      <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
         {/* Search by title/keyword */}
-        <div className="relative flex-1 min-w-[200px] max-w-sm">
+        <div className="relative flex-1 min-w-[140px] sm:min-w-[200px] max-w-full sm:max-w-sm">
           <Search
             size={14}
             className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"

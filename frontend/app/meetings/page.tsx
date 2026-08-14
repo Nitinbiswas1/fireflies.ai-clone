@@ -187,7 +187,7 @@ export default function MeetingsPage() {
         onClearAllFilters={handleClearAllFilters}
       />
 
-      <main className="flex-1 overflow-y-auto bg-slate-50/60 dark:bg-slate-950 p-6">
+      <main className="flex-1 overflow-y-auto bg-slate-50/60 dark:bg-slate-950 p-3.5 sm:p-6">
         <div className="max-w-5xl mx-auto space-y-4">
           <div className="flex items-center justify-between">
             <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">

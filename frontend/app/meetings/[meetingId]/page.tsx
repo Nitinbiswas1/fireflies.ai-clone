@@ -220,9 +220,9 @@ export default function MeetingDetailPage() {
   return (
     <AppShell>
       {/* Top Bar */}
-      <div className="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-3 shrink-0 select-none">
-        <div className="flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3 min-w-0">
+      <div className="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 sm:px-6 py-3 shrink-0 select-none">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 sm:gap-4">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 w-full sm:w-auto">
             <button
               onClick={() => router.push("/meetings")}
               className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors shrink-0"
@@ -230,7 +230,7 @@ export default function MeetingDetailPage() {
             >
               <ArrowLeft size={16} />
             </button>
-            <div className="min-w-0">
+            <div className="min-w-0 flex-1">
               {loadingMeeting ? (
                 <div className="space-y-2">
                   <div className="h-4 w-64 bg-slate-200 dark:bg-slate-800 rounded animate-pulse" />
@@ -238,10 +238,10 @@ export default function MeetingDetailPage() {
                 </div>
               ) : (
                 <>
-                  <h1 className="text-base font-bold text-slate-800 dark:text-slate-100 leading-tight truncate tracking-tight">
+                  <h1 className="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100 leading-tight truncate tracking-tight">
                     {meeting?.title}
                   </h1>
-                  <div className="flex items-center gap-3.5 mt-1">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3.5 mt-1">
                     <span className="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400 font-medium">
                       <CalendarDays size={12} className="text-purple-600 dark:text-purple-400" />
                       {meeting?.meeting_date ? formatDate(meeting.meeting_date) : "—"}
@@ -259,7 +259,7 @@ export default function MeetingDetailPage() {
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 shrink-0">
+          <div className="flex items-center gap-1.5 shrink-0 self-end sm:self-auto">
             {/* Export Dropdown Menu */}
             <div ref={exportMenuRef} className="relative">
               <button
@@ -375,10 +375,10 @@ export default function MeetingDetailPage() {
         onSeek={handleSeekRegister}
       />
 
-      {/* Two-panel workspace */}
-      <div className="flex-1 flex overflow-hidden min-h-0">
+      {/* Two-panel workspace: Stacks vertically on mobile/tablet (< lg), side-by-side on desktop (>= lg) */}
+      <div className="flex-1 flex flex-col lg:flex-row overflow-y-auto lg:overflow-hidden min-h-0">
         {/* LEFT — Notes / Ask AI Chat */}
-        <div className="w-[380px] shrink-0 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col overflow-hidden">
+        <div className="w-full lg:w-[380px] shrink-0 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col overflow-hidden min-h-[360px] max-h-[500px] lg:max-h-none">
           <div className="px-5 py-2 border-b border-slate-100 dark:border-slate-800 flex items-center gap-4">
             <button
               onClick={() => setActiveTab("notes")}
@@ -430,7 +430,7 @@ export default function MeetingDetailPage() {
         </div>
 
         {/* RIGHT — Transcript */}
-        <div className="flex-1 flex flex-col overflow-hidden bg-white dark:bg-slate-900">
+        <div className="w-full flex-1 flex flex-col overflow-hidden min-h-[400px] lg:min-h-0 bg-white dark:bg-slate-900">
           <div className="px-5 py-2.5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
             <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Transcript</span>
             <span className="text-[10px] text-slate-400">{segments.length} segments</span>

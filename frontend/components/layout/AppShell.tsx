@@ -15,10 +15,10 @@ export default function AppShell({ children }: AppShellProps) {
         {/* Floating help button matching bottom-right of reference screenshot */}
         <button
           type="button"
-          className="fixed bottom-5 right-5 w-10 h-10 rounded-full bg-purple-700 hover:bg-purple-800 text-white flex items-center justify-center shadow-lg hover:shadow-xl transition-all z-40"
+          className="fixed bottom-3 sm:bottom-5 right-3 sm:right-5 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-purple-700 hover:bg-purple-800 text-white flex items-center justify-center shadow-lg hover:shadow-xl transition-all z-40"
           title="Help & Support"
         >
-          <HelpCircle size={20} />
+          <HelpCircle size={18} />
         </button>
       </div>
     </div>

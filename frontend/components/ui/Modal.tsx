@@ -36,7 +36,7 @@ export default function Modal({
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-40 flex items-center justify-center bg-black/40 backdrop-blur-[2px] p-4 select-none"
+      className="fixed inset-0 z-40 flex items-center justify-center bg-black/40 backdrop-blur-[2px] p-2.5 sm:p-4 select-none"
       onClick={(e) => {
         if (e.target === overlayRef.current) onClose();
       }}
@@ -46,7 +46,7 @@ export default function Modal({
       >
         {/* Header */}
         {title && (
-          <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 dark:border-slate-800">
+          <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-slate-100 dark:border-slate-800">
             <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-100">{title}</h2>
             <button
               onClick={onClose}
@@ -57,7 +57,7 @@ export default function Modal({
           </div>
         )}
         {/* Body */}
-        <div className="flex-1 overflow-y-auto px-6 py-4">{children}</div>
+        <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-3 sm:py-4">{children}</div>
       </div>
     </div>
   );

@@ -168,7 +168,7 @@ export default function MeetingChat({ meetingId, hasContent }: MeetingChatProps)
                 </div>
               )}
               <div
-                className={`max-w-[85%] rounded-xl px-3.5 py-2.5 text-xs leading-relaxed ${
+                className={`max-w-[88%] sm:max-w-[85%] rounded-xl px-3 sm:px-3.5 py-2 sm:py-2.5 text-xs leading-relaxed break-words ${
                   msg.role === "user"
                     ? "bg-purple-600 text-white rounded-br-none shadow-2xs"
                     : "bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded-bl-none whitespace-pre-wrap"

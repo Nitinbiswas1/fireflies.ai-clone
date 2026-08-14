@@ -46,7 +46,7 @@ export default function TranscriptLine({
   return (
     <div
       onClick={() => onSeek(segment.start_time)}
-      className={`flex gap-3 px-4 py-3 rounded-xl cursor-pointer transition-all group ${
+      className={`flex gap-2.5 sm:gap-3 px-2.5 sm:px-4 py-2 sm:py-3 rounded-xl cursor-pointer transition-all group ${
         isActive
           ? "bg-purple-50/80 border border-purple-200/90 shadow-2xs dark:bg-purple-950/60 dark:border-purple-800/80"
           : "hover:bg-slate-50 dark:hover:bg-slate-800/60 border border-transparent"
@@ -59,11 +59,11 @@ export default function TranscriptLine({
           <img
             src={speaker.avatar_url}
             alt={speaker.name}
-            className="w-7 h-7 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700"
+            className="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700"
           />
         ) : (
           <div
-            className={`w-7 h-7 rounded-full ${color} flex items-center justify-center text-[10px] font-bold text-white shadow-2xs`}
+            className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full ${color} flex items-center justify-center text-[9px] sm:text-[10px] font-bold text-white shadow-2xs`}
           >
             {initial}
           </div>
@@ -72,7 +72,7 @@ export default function TranscriptLine({
 
       {/* Content */}
       <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-2 mb-1">
+        <div className="flex items-center gap-2 mb-1 flex-wrap">
           <span className="text-xs font-bold text-slate-800 dark:text-slate-100 group-hover:text-purple-700 dark:group-hover:text-purple-400 transition-colors">
             {speaker?.name ?? "Unknown"}
           </span>
@@ -87,7 +87,7 @@ export default function TranscriptLine({
             {formatTimestamp(segment.start_time)}
           </button>
         </div>
-        <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
+        <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-normal break-words">
           {highlightText(segment.text, searchQuery)}
         </p>
       </div>

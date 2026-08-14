@@ -57,19 +57,19 @@ export default function ActionItems({
   return (
     <div className="space-y-1.5">
       {items.length === 0 && !adding && (
-        <p className="text-xs text-slate-400 italic py-1">No action items yet.</p>
+        <p className="text-xs text-slate-400 dark:text-slate-500 italic py-1">No action items yet.</p>
       )}
 
       {items.map((item) => (
         <div
           key={item.id}
           className={`flex items-start gap-2.5 p-2 rounded-md group transition-colors ${
-            item.completed ? "opacity-60" : "hover:bg-slate-50"
+            item.completed ? "opacity-60" : "hover:bg-slate-50 dark:hover:bg-slate-800/60"
           }`}
         >
           <button
             onClick={() => onToggle(item)}
-            className="mt-0.5 shrink-0 text-slate-400 hover:text-violet-500 transition-colors"
+            className="mt-0.5 shrink-0 text-slate-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
           >
             {item.completed ? (
               <CheckCircle2 size={15} className="text-emerald-500" />
@@ -80,17 +80,17 @@ export default function ActionItems({
 
           <div className="flex-1 min-w-0">
             <p
-              className={`text-xs leading-snug ${
+              className={`text-xs leading-snug break-words ${
                 item.completed
-                  ? "line-through text-slate-400"
-                  : "text-slate-700"
+                  ? "line-through text-slate-400 dark:text-slate-500"
+                  : "text-slate-700 dark:text-slate-200"
               }`}
             >
               {item.description}
             </p>
-            <div className="flex items-center gap-2 mt-0.5">
+            <div className="flex items-center gap-2 mt-0.5 flex-wrap">
               {item.assignee && (
-                <span className="flex items-center gap-1 text-[10px] text-slate-400">
+                <span className="flex items-center gap-1 text-[10px] text-slate-400 dark:text-slate-500">
                   <div
                     className={`w-3.5 h-3.5 rounded-full ${avatarColor(item.assignee.name)} flex items-center justify-center text-[7px] font-bold text-white`}
                   >
@@ -100,7 +100,7 @@ export default function ActionItems({
                 </span>
               )}
               {item.due_date && (
-                <span className="text-[10px] text-slate-400">
+                <span className="text-[10px] text-slate-400 dark:text-slate-500">
                   Due {formatDate(item.due_date)}
                 </span>
               )}
@@ -109,7 +109,7 @@ export default function ActionItems({
 
           <button
             onClick={() => onDelete(item)}
-            className="shrink-0 opacity-0 group-hover:opacity-100 text-slate-300 hover:text-red-400 transition-all"
+            className="shrink-0 opacity-80 sm:opacity-0 group-hover:opacity-100 text-slate-300 hover:text-red-500 transition-all p-0.5"
           >
             <Trash2 size={12} />
           </button>
@@ -117,35 +117,37 @@ export default function ActionItems({
       ))}
 
       {adding ? (
-        <form onSubmit={handleCreate} className="flex items-center gap-2 mt-1">
+        <form onSubmit={handleCreate} className="flex flex-wrap sm:flex-nowrap items-center gap-2 mt-1">
           <input
             autoFocus
             type="text"
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
             placeholder="Action item title…"
-            className="flex-1 px-2.5 py-1.5 text-xs border border-violet-300 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500/30"
+            className="flex-1 min-w-[150px] px-2.5 py-1.5 text-xs border border-purple-300 dark:border-purple-800 rounded-md bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-purple-500/30"
           />
-          <button
-            type="submit"
-            disabled={saving || !newTitle.trim()}
-            className="px-2.5 py-1.5 text-xs font-medium bg-violet-600 text-white rounded-md hover:bg-violet-700 disabled:opacity-50 transition-colors flex items-center gap-1"
-          >
-            {saving ? <Loader2 size={11} className="animate-spin" /> : null}
-            Add
-          </button>
-          <button
-            type="button"
-            onClick={() => { setAdding(false); setNewTitle(""); }}
-            className="px-2.5 py-1.5 text-xs text-slate-500 hover:bg-slate-100 rounded-md transition-colors"
-          >
-            Cancel
-          </button>
+          <div className="flex items-center gap-1 shrink-0">
+            <button
+              type="submit"
+              disabled={saving || !newTitle.trim()}
+              className="px-2.5 py-1.5 text-xs font-medium bg-purple-600 text-white rounded-md hover:bg-purple-700 disabled:opacity-50 transition-colors flex items-center gap-1"
+            >
+              {saving ? <Loader2 size={11} className="animate-spin" /> : null}
+              Add
+            </button>
+            <button
+              type="button"
+              onClick={() => { setAdding(false); setNewTitle(""); }}
+              className="px-2.5 py-1.5 text-xs text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-md transition-colors"
+            >
+              Cancel
+            </button>
+          </div>
         </form>
       ) : (
         <button
           onClick={() => setAdding(true)}
-          className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-violet-600 transition-colors mt-1 px-2 py-1"
+          className="flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-500 hover:text-purple-600 dark:hover:text-purple-400 transition-colors mt-1 px-2 py-1"
         >
           <Plus size={13} /> Add action item
         </button>

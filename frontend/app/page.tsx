@@ -81,7 +81,7 @@ export default function Home() {
     <AppShell>
       <Topbar title="Home" />
 
-      <main className="flex-1 overflow-y-auto bg-gradient-to-b from-blue-50/40 via-purple-50/20 to-slate-50 dark:from-slate-950 dark:via-purple-950/20 dark:to-slate-950 p-6 sm:p-8 space-y-8">
+      <main className="flex-1 overflow-y-auto bg-slate-50/60 dark:bg-slate-950 p-3.5 sm:p-6 space-y-4 sm:space-y-6">
         <div className="max-w-5xl mx-auto space-y-8">
           {/* Hero Banner Card matching Reference Screenshot */}
           <div className="relative overflow-hidden bg-gradient-to-r from-amber-50/80 via-orange-50/40 to-pink-50/60 dark:from-amber-950/40 dark:via-orange-950/30 dark:to-pink-950/30 border border-amber-100/80 dark:border-amber-900/40 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xs">

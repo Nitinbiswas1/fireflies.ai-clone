@@ -32,10 +32,10 @@ export default function SettingsPage() {
     <AppShell>
       <Topbar title="Settings" />
 
-      <main className="flex-1 overflow-y-auto bg-slate-50 dark:bg-slate-950 p-8">
+      <main className="flex-1 overflow-y-auto bg-slate-50 dark:bg-slate-950 p-3.5 sm:p-8">
         <div className="max-w-4xl mx-auto space-y-6">
           {/* Navigation Tabs */}
-          <div className="flex border-b border-slate-200 dark:border-slate-800 gap-6 bg-white dark:bg-slate-900 px-6 pt-3 rounded-t-xl border border-b-0">
+          <div className="flex overflow-x-auto border-b border-slate-200 dark:border-slate-800 gap-3 sm:gap-6 bg-white dark:bg-slate-900 px-3 sm:px-6 pt-3 rounded-t-xl border border-b-0 shrink-0">
             {[
               { id: "profile", label: "Profile & Account", icon: <Users size={14} /> },
               { id: "bot", label: "Meeting Bot", icon: <Bot size={14} /> },
@@ -126,7 +126,7 @@ export default function SettingsPage() {
                   </span>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 pt-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-2">
                   <div>
                     <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">
                       Logged-in User
@@ -268,7 +268,7 @@ export default function SettingsPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {/* Zoom */}
                 <div className="bg-white p-5 rounded-xl border border-slate-200 flex flex-col justify-between space-y-4">
                   <div className="space-y-2">
@@ -398,7 +398,7 @@ export default function SettingsPage() {
                   <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Workspace Sharing Options
                   </h4>
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div className="p-3 bg-white rounded-lg border border-slate-200 space-y-1">
                       <p className="text-xs font-semibold text-slate-700">Team Members</p>
                       <p className="text-[11px] text-slate-400">Manage seats & access roles</p>
@@ -461,7 +461,7 @@ export default function SettingsPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 pt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-2">
                 <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
                   <h4 className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
                     <FileText size={14} className="text-violet-600" />

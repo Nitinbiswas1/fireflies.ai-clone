@@ -32,12 +32,13 @@ export default function MeetingCard({
   return (
     <div
       onClick={handleClick}
-      className="group flex items-center gap-4 px-5 py-3.5 bg-white hover:bg-purple-50/20 dark:bg-slate-900 dark:hover:bg-slate-800/80 cursor-pointer border-b border-slate-100/90 dark:border-slate-800/90 transition-all"
+      className="group flex items-center gap-2.5 sm:gap-4 px-3 sm:px-5 py-3 bg-white hover:bg-purple-50/20 dark:bg-slate-900 dark:hover:bg-slate-800/80 cursor-pointer border-b border-slate-100/90 dark:border-slate-800/90 transition-all"
     >
       {/* Flame Icon / Date Badge */}
-      <div className="flex items-center gap-3 shrink-0">
-        <div className="w-9 h-9 rounded-xl bg-purple-50 text-purple-600 dark:bg-purple-950/70 dark:text-purple-400 flex items-center justify-center border border-purple-100 dark:border-purple-900/60 group-hover:bg-purple-600 group-hover:text-white transition-all shadow-2xs">
-          <Flame size={18} />
+      <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+        <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-purple-50 text-purple-600 dark:bg-purple-950/70 dark:text-purple-400 flex items-center justify-center border border-purple-100 dark:border-purple-900/60 group-hover:bg-purple-600 group-hover:text-white transition-all shadow-2xs">
+          <Flame size={16} className="sm:hidden" />
+          <Flame size={18} className="hidden sm:block" />
         </div>
         <div className="w-10 text-center shrink-0">
           <div className="text-[10px] font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wider leading-none">
